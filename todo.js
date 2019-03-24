@@ -1,14 +1,3 @@
-// {
-//   targetItem: 'string'
-//   event: {
-//     target: {
-//       dataset: {
-//         targetItem: 'some other string'
-//       }
-//     }
-//   }
-// }
-
 // get DOM elements
 var submitButton = document.querySelector("#submit");
 var textbox = document.querySelector("#text");
