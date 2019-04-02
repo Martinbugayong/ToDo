@@ -4,42 +4,29 @@ var textbox = document.querySelector("#text");
 var list = document.querySelector("#list-container");
 
 // Declare CLick handlers 
-
-/**
-* @visualize
-* <li>
-*   some list item
-*   <button>delete</button>
-*   <button>edit</button>
-* </li>
-*/
-
 var submit = function() {
   // create elements
   var listItem = document.createElement('li'); // <li></li>
   var deleteBtn = document.createElement('button') // <button></button>
-  var editBtn = document.createElement('button')
-
-  var RANDOM_ID = makeid(6)
+  var editBtn = document.createElement('button') // <button></button>
+  var RANDOM_ID = makeid(6) // <li id="makes this ID here"></li> 
 
   // assemble elements
   listItem.innerHTML = textbox.value; // <li>textbox.value</li>
-  listItem.id = RANDOM_ID;
-
+  listItem.id = RANDOM_ID; // <li>RANDOM_ID</li>
+  
+  // delete button 
   deleteBtn.innerHTML = 'delete'; // <button>delete</button>
   deleteBtn.dataset.targetItem = RANDOM_ID; // <button data-targetItem={RANDOM_ID}>delete</button>
   deleteBtn.addEventListener('click', function(event) {
-                        // dataset = data-
-                        // targetItem = target-item
-                        // dataset.targetItem = data-target-item
-                        // button.data-.data-target-item
     var targetId = event.target.dataset.targetItem // string of RANDOM_ID
-    var child = list.querySelector('#' + targetId)
+    var child = list.querySelector('#' + targetId) // selects the RANDOM_ID of the specific task
     if (child){
       list.removeChild(child)
     }
   })
   
+  // edit button
   editBtn.innerHTML = 'edit';
 
   listItem.appendChild(deleteBtn);// ul>li>textbox.value + deleteBtn
@@ -58,19 +45,13 @@ var deleteElement = function() {
   console.log(toBeDeleted);
   list.removeChild(toBeDeleted);
 }
-// above code adopted from 
-// function removeElement(node) {
-//   node.parentNode.removeChild(node);
-// }
-
-
 
 // add event listiner 
 submitButton.addEventListener("click", function(e) {
   submit();
 })
 
-
+// logic for task ID
 function makeid(length) {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
